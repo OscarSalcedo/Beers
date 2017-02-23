@@ -1,0 +1,26 @@
+﻿@model List<Beers.web.Models.BeerType.BeerTypeViewModel>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.Label(item.Code.ToString())
+                    </td>
+                    <td>
+                        @Html.Label(item.Description)
+                    </td>
+                </tr>
+            }
+    </table>
+</div>

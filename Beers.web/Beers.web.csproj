@@ -120,10 +120,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BeerTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BeerType\BeerTypeViewModelCreate.cs" />
+    <Compile Include="Models\BeerType\BeerTypeViewModelExtension.cs" />
+    <Compile Include="Models\BeerType\BeerTypeViewModel.cs" />
+    <Compile Include="Models\BeerType\BeerTypeViewModelFilter.cs" />
+    <Compile Include="Models\BeerType\BeerTypeViewModelIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,10 +167,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BeerType\Index.cshtml" />
+    <Content Include="Views\BeerType\_Filter.cshtml" />
+    <Content Include="Views\BeerType\_Result.cshtml" />
+    <Content Include="Views\BeerType\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -173,6 +182,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Beers.Common.Service\Beers.Common.Service.csproj">
+      <Project>{e3176538-e8ec-4a7b-b7e4-9b465ccdb701}</Project>
+      <Name>Beers.Common.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Beers.services\Beers.Service.csproj">
+      <Project>{C25A6A67-EECA-48A4-8FB5-770154660334}</Project>
+      <Name>Beers.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

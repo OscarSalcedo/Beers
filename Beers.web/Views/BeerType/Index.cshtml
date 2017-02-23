@@ -1,0 +1,21 @@
+﻿@model Beers.web.Models.BeerType.BeerTypeViewModelIndex
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Filter","BeerType",FormMethod.Post))
+{
+    <div>
+        @{Html.RenderPartial("_Filter", Model.Filter);}
+        <input type="submit" value="Search" />
+        @Html.ActionLink("Create new Type","Create")
+        <input type="button" value="New Type" />
+    </div>
+    <div>
+        @{Html.RenderPartial("_Result", Model.BeerTypeViewModelList.ToList());}
+
+    </div>
+}
