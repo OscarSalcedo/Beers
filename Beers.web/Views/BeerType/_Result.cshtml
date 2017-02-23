@@ -20,6 +20,11 @@
                     <td>
                         @Html.Label(item.Description)
                     </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Code }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+                    </td>
                 </tr>
             }
     </table>

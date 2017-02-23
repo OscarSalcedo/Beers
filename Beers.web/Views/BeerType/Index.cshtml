@@ -12,7 +12,6 @@
         @{Html.RenderPartial("_Filter", Model.Filter);}
         <input type="submit" value="Search" />
         @Html.ActionLink("Create new Type","Create")
-        <input type="button" value="New Type" />
     </div>
     <div>
         @{Html.RenderPartial("_Result", Model.BeerTypeViewModelList.ToList());}

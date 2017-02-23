@@ -42,8 +42,31 @@ namespace Beers.web.Controllers
 
         public ActionResult Create()
         {
-            var model = new BeerTypeViewModelCreate();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(BeerTypeViewModelCreate source)
+        {
+            _beerTypeService.CreateBeerType(source.StringType);
+
+            return View("Index");
+        }
+        public ActionResult Delete(Guid id)
+        {
+            var model = new BeerTypeViewModel();
+
+            model = _beerTypeService.GetById(id).ToBeerTypeViewModelDelete();
+
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBeerType (Guid id)
+        {
+            _beerTypeService.DeleteBeerType(id);
+
+            return View("Index");
         }
 
     }

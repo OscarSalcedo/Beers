@@ -35,5 +35,15 @@ namespace Beers.web.Models.BeerType
 
             return (resultList);
         }
+
+        public static BeerTypeViewModelDelete ToBeerTypeViewModelDelete(this BeerTypeDto source)
+        {
+            var result = new BeerTypeViewModelDelete
+            {
+                Code = source.Code,
+                Description = source.Description
+            };
+            return result;
+        }
     }
 }

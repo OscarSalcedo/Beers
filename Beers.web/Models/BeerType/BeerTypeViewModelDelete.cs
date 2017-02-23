@@ -5,10 +5,8 @@ using System.Web;
 
 namespace Beers.web.Models.BeerType
 {
-    public class BeerTypeViewModelCreate
+    public class BeerTypeViewModelDelete : BeerTypeViewModel
     {
-        public string StringType { get; set; }
-    }
-       
 
+    }
 }

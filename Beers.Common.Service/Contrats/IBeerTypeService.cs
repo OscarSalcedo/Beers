@@ -13,6 +13,7 @@ namespace Beers.Common.Service.Contrats
         List<BeerTypeDto>GetAll();
         BeerTypeDto GetById(Guid id);
         List<BeerTypeDto> GetByName(string name);
-        List<BeerTypeDto> CreateBeerType(BeerTypeDto type);
+        void CreateBeerType(string type);
+        void DeleteBeerType(Guid id);
     }
 }

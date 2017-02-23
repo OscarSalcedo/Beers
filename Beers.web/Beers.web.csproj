@@ -126,6 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BeerType\BeerTypeViewModelCreate.cs" />
+    <Compile Include="Models\BeerType\BeerTypeViewModelDelete.cs" />
     <Compile Include="Models\BeerType\BeerTypeViewModelExtension.cs" />
     <Compile Include="Models\BeerType\BeerTypeViewModel.cs" />
     <Compile Include="Models\BeerType\BeerTypeViewModelFilter.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Views\BeerType\_Filter.cshtml" />
     <Content Include="Views\BeerType\_Result.cshtml" />
     <Content Include="Views\BeerType\Create.cshtml" />
+    <Content Include="Views\BeerType\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

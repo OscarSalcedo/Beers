@@ -28,18 +28,30 @@ namespace Beers.services.Implementations
             return Context.BeerType.Where(w => w.Name.Contains(name)).ToBeerTypeDtoList(); 
         }
 
-        public List<BeerTypeDto> CreateBeerType(BeerTypeDto type)
+        public void CreateBeerType(string type)
         {
             Guid guid;
             guid = Guid.NewGuid();
 
-            type.Code = guid;
+            BeerTypeDto newBeerTypeDto = new BeerTypeDto
+            {
+                Code = guid,
+                Description = type
+            };
 
-            var newBeerType = type.ToBeerType();
+            var newBeerType = newBeerTypeDto.ToBeerType();
 
             Context.BeerType.Add(newBeerType);
+            Context.SaveChanges();
 
-            return Context.BeerType.ToBeerTypeDtoList();
+        }
+
+        public void DeleteBeerType(Guid id)
+        {
+            var beerTypeDelete = Context.BeerType.FirstOrDefault(f => f.Id == id);
+
+            Context.BeerType.Remove(beerTypeDelete);
+            Context.SaveChanges();
         }
 
 

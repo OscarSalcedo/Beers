@@ -1,0 +1,19 @@
+﻿@model Beers.web.Models.BeerType.BeerTypeViewModelDelete
+
+<h2>Delete</h2>
+
+<h2>Are you sure you want to delete this?</h2>
+<p>
+    @Html.DisplayNameFor(Model => Model.Code):
+    @Html.DisplayFor(Model => Model.Code)
+</p>
+<p>
+    @Html.DisplayNameFor(Model => Model.Description):
+    @Html.DisplayFor(Model => Model.Description)
+</p>
+@using (Html.BeginForm("Delete", "BeerType", FormMethod.Post))
+{
+
+    <input type="submit" value="DeleteBeerType" class="btn btn-default" />
+}
+

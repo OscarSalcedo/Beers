@@ -1,1 +1,13 @@
-﻿
+﻿@model Beers.web.Models.BeerType.BeerTypeViewModelCreate
+
+<h2>Create page</h2>
+
+@using (Html.BeginForm("Create", "BeerType", FormMethod.Post))
+{
+    @Html.Label("Name of new Beer Type: ")
+    @Html.TextBoxFor(t => t.StringType)
+    <input type="submit" value="Create Type" />
+    
+}
+
+
