@@ -9,7 +9,8 @@ namespace Beers.services.Implementations
 {
     public class BeerTypeService : ServiceBase, IBeerTypeService
     {
-        public BeerTypeService(){
+        public BeerTypeService()
+        {
         }
 
         public List<BeerTypeDto> GetAll()
@@ -25,7 +26,7 @@ namespace Beers.services.Implementations
 
         public List<BeerTypeDto> GetByName(string name)
         {
-            return Context.BeerType.Where(w => w.Name.Contains(name)).ToBeerTypeDtoList(); 
+            return Context.BeerType.Where(w => w.Name.Contains(name)).ToBeerTypeDtoList();
         }
 
         public void CreateBeerType(string type)
@@ -42,15 +43,21 @@ namespace Beers.services.Implementations
             var newBeerType = newBeerTypeDto.ToBeerType();
 
             Context.BeerType.Add(newBeerType);
-            Context.SaveChanges();
-
+            var result = Context.SaveChanges();
         }
 
         public void DeleteBeerType(Guid id)
         {
-            var beerTypeDelete = Context.BeerType.FirstOrDefault(f => f.Id == id);
+            var beerTypeDelete = Context.BeerType.Find(id);
 
             Context.BeerType.Remove(beerTypeDelete);
+            Context.SaveChanges();
+        }
+
+        public void UpdateBeerType(BeerTypeDto beerTypeDto)
+        {
+            var beerType = beerTypeDto.ToBeerType();
+
             Context.SaveChanges();
         }
 

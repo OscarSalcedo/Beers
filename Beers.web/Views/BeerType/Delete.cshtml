@@ -1,4 +1,4 @@
-﻿@model Beers.web.Models.BeerType.BeerTypeViewModelDelete
+﻿@*@model Beers.web.Models.BeerType.BeerTypeViewModelDelete
 
 <h2>Delete</h2>
 
@@ -11,9 +11,9 @@
     @Html.DisplayNameFor(Model => Model.Description):
     @Html.DisplayFor(Model => Model.Description)
 </p>
-@using (Html.BeginForm("Delete", "BeerType", FormMethod.Post))
+@using (Html.BeginForm("DeleteBeerType", "BeerType", FormMethod.Post))
 {
 
     <input type="submit" value="DeleteBeerType" class="btn btn-default" />
-}
+}*@
 

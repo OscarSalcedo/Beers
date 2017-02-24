@@ -45,5 +45,16 @@ namespace Beers.web.Models.BeerType
             };
             return result;
         }
+
+        public static BeerTypeViewModelDetails ToBeerTypeViewModelDetails(this BeerTypeDto source)
+        {
+            var result = new BeerTypeViewModelDetails
+            {
+                Code = source.Code,
+                Description = source.Description
+            };
+            return result;
+        }
+
     }
 }

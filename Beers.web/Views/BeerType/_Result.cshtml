@@ -12,10 +12,11 @@
         </tr>
 
         @foreach (var item in Model)
-            {
+        {
                 <tr>
                     <td>
-                        @Html.Label(item.Code.ToString())
+                        @Html.ActionLink(item.Code.ToString(),"Edit", new { id = item.Code})
+                        @*@Html.Label(item.Code.ToString())*@
                     </td>
                     <td>
                         @Html.Label(item.Description)

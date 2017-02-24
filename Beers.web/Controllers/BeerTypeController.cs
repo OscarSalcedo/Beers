@@ -11,9 +11,11 @@ namespace Beers.web.Controllers
     public class BeerTypeController : Controller
     {
         private BeerTypeService _beerTypeService;
+        private BeerService _beerService;
         public BeerTypeController()
         {
             _beerTypeService = new BeerTypeService();
+            _beerService = new BeerService();
         }
 
         // GET: BeerType
@@ -48,26 +50,47 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Create(BeerTypeViewModelCreate source)
         {
-            _beerTypeService.CreateBeerType(source.StringType);
+            if (ModelState.IsValid)
+            {
+                _beerTypeService.CreateBeerType(source.StringType);
 
-            return View("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(source);
+            }
+
+
         }
+        //[HttpPost]
         public ActionResult Delete(Guid id)
+        {
+            if (!_beerService.BeersAssignedToType(id))
+            {
+                _beerTypeService.DeleteBeerType(id);
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult Edit(Guid id)
         {
             var model = new BeerTypeViewModel();
 
-            model = _beerTypeService.GetById(id).ToBeerTypeViewModelDelete();
+            model = _beerTypeService.GetById(id).ToBeerTypeViewModelDetails();
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult DeleteBeerType (Guid id)
+        public ActionResult Update(BeerTypeViewModel details)
         {
-            _beerTypeService.DeleteBeerType(id);
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
+
 
     }
 }

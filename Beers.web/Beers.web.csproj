@@ -173,6 +173,7 @@
     <Content Include="Views\BeerType\_Result.cshtml" />
     <Content Include="Views\BeerType\Create.cshtml" />
     <Content Include="Views\BeerType\Delete.cshtml" />
+    <Content Include="Views\BeerType\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

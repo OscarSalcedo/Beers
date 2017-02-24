@@ -1,0 +1,26 @@
+﻿@model Beers.web.Models.BeerType.BeerTypeViewModel
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<p class="form-control">
+    @Html.DisplayNameFor(Model => Model.Code):
+    @Html.DisplayFor(Model => Model.Code)
+</p>
+<p class="form-control">
+    @Html.DisplayNameFor(Model => Model.Description):
+    @Html.DisplayFor(Model => Model.Description)
+</p>
+
+
+@using (Html.BeginForm("Update", "BeerType", FormMethod.Post))
+{
+    @Html.HiddenFor(h => h.Code)
+    <p>
+        @Html.TextBoxFor(t=>t.Description)
+    </p>
+    <input type="submit" value="Change Name" class="btn btn-default" />
+}
+
+
