@@ -8,46 +8,42 @@ using System.Threading.Tasks;
 
 namespace Beers.services.Mappers
 {
-    public static class BeerExtension
+    public static class CountryExtension
     {
-        public static BeerDto ToBeerDto(this Beer source)
+        public static CountryDto ToCountryDto(this Country source)
         {
-            var result = new BeerDto
+            var result = new CountryDto
             {
                 Code = source.Id,
                 Description = source.Name,
-                BeerTypeDto = source.BeerType.ToBeerTypeDto()
+                //CitiesDto = source.Cities
             };
-
             return result;
         }
-        public static List<BeerDto> ToBeerDtoList(this List<Beer> source)
+        public static List<CountryDto> ToCountryDtoList(this IQueryable<Country> source)
         {
-            var resultList = new List<BeerDto>();
+            var result = new List<CountryDto>();
 
             if (source.Any())
             {
                 source.ToList().ForEach(f =>
                 {
-                    resultList.Add(f.ToBeerDto());
+                    result.Add(f.ToCountryDto());
                 });
             }
 
-            return resultList;
+            return result;
         }
-        
-        public static Beer ToBeer(this BeerDto source)
+
+        public static Country ToCountry(this CountryDto source)
         {
-            var result = new Beer
+            var result = new Country
             {
                 Id = source.Code,
                 Name = source.Description,
-                Graduation = source.Graduation,
-                BeerType = source.BeerTypeDto.ToBeerType(),
-                Country = source.CountryDto.ToCountry()
+                //Cities = source.CitiesDto
             };
-
             return result;
-        } 
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Beers.services.Mappers;
 using System.Linq;
 using System;
+using System.Data.Entity;
 
 namespace Beers.services.Implementations
 {
@@ -56,9 +57,15 @@ namespace Beers.services.Implementations
 
         public void UpdateBeerType(BeerTypeDto beerTypeDto)
         {
-            var beerType = beerTypeDto.ToBeerType();
+            //var newType = beerTypeDto.Description;
+
+
+            var entityToModify = Context.BeerType.Find(beerTypeDto.Code);
+
+            entityToModify.Name = beerTypeDto.Description;
 
             Context.SaveChanges();
+
         }
 
 

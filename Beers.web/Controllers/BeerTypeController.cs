@@ -79,15 +79,16 @@ namespace Beers.web.Controllers
         {
             var model = new BeerTypeViewModel();
 
-            model = _beerTypeService.GetById(id).ToBeerTypeViewModelDetails();
+            model = _beerTypeService.GetById(id).ToBeerTypeViewModel();
 
-            return View(model);
+            return View("Details",model);
         }
 
         [HttpPost]
         public ActionResult Update(BeerTypeViewModel details)
         {
-
+            
+            _beerTypeService.UpdateBeerType(details.ToBeerTypeDto());
             return RedirectToAction("Index");
         }
 

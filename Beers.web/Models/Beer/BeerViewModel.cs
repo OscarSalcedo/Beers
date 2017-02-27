@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Beers.Common.Service.DTOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Beers.Common.Service.DTOs
+namespace Beers.web.Models.Beer
 {
-    public class BeerDto :BaseDto
+    public class BeerViewModel
     {
+        public string Name { get; set; }
+
         [DataType("decimal(2,2)")]
         public decimal Graduation { get; set; }
 

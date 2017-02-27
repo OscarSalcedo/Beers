@@ -30,5 +30,19 @@ namespace Beers.services.Implementations
             //return result;
         }
 
+        public int CreateBeer(BeerDto beerDto)
+        {
+            Guid id;
+            id = Guid.NewGuid();
+
+            beerDto.Code = id;
+
+            var newBeer = beerDto.ToBeer();
+            Context.Beer.Add(newBeer);
+            var result = Context.SaveChanges();
+
+            return result;
+        }
+
     }
 }

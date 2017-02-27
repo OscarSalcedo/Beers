@@ -1,0 +1,14 @@
+﻿@model Beers.web.Models.Beer.BeerViewModelCreate
+
+<h2>Create</h2>
+<div class="form-control">
+    @{Html.LabelFor(Model => Model.Name);}
+    @Html.TextBoxFor(Model => Model.Name)
+</div>
+<div class="form-control">
+    @{Html.LabelFor(Model => Model.Graduation);}
+    @Html.TextBoxFor(Model => Model.Name)
+</div>
+<div class="form-control">
+    @Html.DropDownListFor(m=> m.BeerTypeId, Model.BeerTypeDtoList);
+</div>

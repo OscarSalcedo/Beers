@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BeerController.cs" />
     <Compile Include="Controllers\BeerTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -131,6 +132,10 @@
     <Compile Include="Models\BeerType\BeerTypeViewModel.cs" />
     <Compile Include="Models\BeerType\BeerTypeViewModelFilter.cs" />
     <Compile Include="Models\BeerType\BeerTypeViewModelIndex.cs" />
+    <Compile Include="Models\Beer\BeerViewModel.cs" />
+    <Compile Include="Models\Beer\BeerViewModelCreate.cs" />
+    <Compile Include="Models\Beer\BeerViewModelExtension.cs" />
+    <Compile Include="Models\Beer\BeerViewModelIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +179,8 @@
     <Content Include="Views\BeerType\Create.cshtml" />
     <Content Include="Views\BeerType\Delete.cshtml" />
     <Content Include="Views\BeerType\Details.cshtml" />
+    <Content Include="Views\Beer\Index.cshtml" />
+    <Content Include="Views\Beer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
