@@ -26,6 +26,10 @@ namespace Beers.web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundel/beerType").Include(
+                        "~/scripts/beertype/sccrpt1.js", "~/scripts/beertype/sccrpt2.js", "~/scripts/beertype/sccrpt3.js"));
+
         }
     }
 }

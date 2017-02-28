@@ -20,6 +20,34 @@
                 Country
             </th>
         </tr>
+
+        @foreach (var item in Model.BeerViewModelList)
+        {
+            <tr>
+                <td>
+                    @Html.Label(item.Name)
+                    @*@Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Code })*@
+                    @*@Html.Label(item.Code.ToString())*@
+                </td>
+                <td>
+                    @Html.Label(item.Graduation.ToString())
+                </td>
+                <td>
+                    @Html.Label(item.BeerTypeDto.ToString())
+                </td>
+                <td>
+                    @Html.Label(item.CountryDto.ToString())
+                </td>
+                <td>
+                    @Html.Label(item.CityDto.ToString())
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Code }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+                </td>*@
+            </tr>
+        }
        
     </table>
 </div>

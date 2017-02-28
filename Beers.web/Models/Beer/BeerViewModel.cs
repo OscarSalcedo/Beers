@@ -17,5 +17,7 @@ namespace Beers.web.Models.Beer
         public BeerTypeDto BeerTypeDto { get; set; }
 
         public CountryDto CountryDto { get; set; }
+
+        public CityDto CityDto { get; set; }
     }
 }

@@ -11,8 +11,10 @@ namespace Beers.web.Models.Beer
     {
         public IEnumerable<SelectListItem> BeerTypeDtoList { get; set; }
 
-        public List<CountryDto> CountryDtoList { get; set; }
+        public IEnumerable<SelectListItem> CountryDtoList { get; set; }
 
         public Guid BeerTypeId { get; set; }
+
+        public Guid CountryId { get; set; }
     }
 }

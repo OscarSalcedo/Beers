@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Beers.Model
+namespace Beers.Common.Service.DTOs
 {
-    public class City:BaseEntity
+    public class CityDto :BaseDto
     {
-        public Country Country { get; set; }
-
+        public CountryDto CountryDto { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace Beers.Common.Service.DTOs
 {
     public class CountryDto :BaseDto
     {
-        //public List<CityDto> CitiesDto { get; set; }
+        public List<CityDto> CitiesDto { get; set; }
     }
 }

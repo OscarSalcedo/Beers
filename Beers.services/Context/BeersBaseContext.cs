@@ -16,7 +16,7 @@ namespace Beers.services.Context
         public DbSet<Beer> Beer { get; set; }
         public DbSet<BeerType> BeerType { get; set; }
         public DbSet<Country> Country { get; set; }
-        public DbSet<City> Cities { get; set; }
+        public DbSet<City> City { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
