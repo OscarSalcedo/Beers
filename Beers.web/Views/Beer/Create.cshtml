@@ -9,7 +9,7 @@
     </div>
     <div class="form-control">
         @Html.LabelFor(m => m.Graduation)
-        @Html.TextBoxFor(m => m.Graduation)
+        @Html.TextBoxFor(m => m.Graduation, new { id = "txtGraduation" })
     </div>
     <div class="form-control">
         @Html.DropDownListFor(m => m.BeerTypeId, Model.BeerTypeDtoList)
@@ -18,7 +18,7 @@
         @Html.DropDownListFor(m => m.CountryId, Model.CountryDtoList, new { id = "cmbCountry" })
     </div>
     <div>
-
+        @Html.DropDownListFor(m => m.CityId, Model.CityDtoList, new { id = "cmbCities" })
     </div>
     <div>
         <input type="submit" value="Create Beer" />

@@ -1,4 +1,5 @@
-﻿using Beers.services.Implementations;
+﻿using Beers.Common.Service.Contrats;
+using Beers.services.Implementations;
 using Beers.web.Models.BeerType;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Beers.web.Controllers
 {
     public class BeerTypeController : Controller
     {
-        private BeerTypeService _beerTypeService;
-        private BeerService _beerService;
+        private IBeerTypeService _beerTypeService;
+        private IBeerService _beerService;
         public BeerTypeController()
         {
             _beerTypeService = new BeerTypeService();

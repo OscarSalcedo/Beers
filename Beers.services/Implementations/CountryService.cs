@@ -15,5 +15,10 @@ namespace Beers.services.Implementations
         {
             return Context.Country.ToCountryDtoList();
         }
+
+        public CountryDto GetCountryById(Guid id)
+        {
+            return Context.Country.Find(id).ToCountryDto();
+        }
     }
 }

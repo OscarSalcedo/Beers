@@ -11,6 +11,13 @@ namespace Beers.services.Implementations
 {
     public class BeerService : ServiceBase, IBeerService
     {
+        private BeerTypeService _beerTypeService;
+        private CountryService _countryService;
+        public BeerService()
+        {
+            _beerTypeService = new BeerTypeService();
+            _countryService = new CountryService();
+        }
         public List<BeerDto> GetBeerByBeerType(Guid id)
         {
             return Context.Beer.Where(w => w.BeerType.Id == id).ToList().ToBeerDtoList();
@@ -34,10 +41,18 @@ namespace Beers.services.Implementations
         {
             Guid id;
             id = Guid.NewGuid();
-
             beerDto.Code = id;
 
-            var newBeer = beerDto.ToBeer();
+            var Beer = new BeerDto
+            {
+                Code = id,
+                Description = beerDto.Description,
+                BeerTypeDto = _beerTypeService.GetById(beerDto.BeerTypeDto.Code),
+                CountryDto = _countryService.GetCountryById(beerDto.CountryDto.Code),
+                Graduation = beerDto.Graduation
+            };
+
+            var newBeer = Beer.ToBeer();
             Context.Beer.Add(newBeer);
             var result = Context.SaveChanges();
 

@@ -11,13 +11,19 @@ namespace Beers.services.Implementations
 {
     public class CityService :ServiceBase, ICityService
     {
-        public CityService()
-        {
-
-        }
         public List<CityDto> GetAll()
         {
             return Context.City.ToCityDtoList();
+        }
+        
+        public List<CityDto> GetById(Guid id)
+        {
+            return Context.City.Where(w => w.Id == id).ToCityDtoList();
+        }
+
+        public List<CityDto> GetByCountryId(Guid CountryId)
+        {
+            return Context.City.Where(w => w.Country.Id == CountryId).ToCityDtoList();
         }
     }
 }

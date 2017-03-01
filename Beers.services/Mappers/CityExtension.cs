@@ -30,7 +30,7 @@ namespace Beers.services.Mappers
             {
                 Code = source.Id,
                 Description = source.Name,
-                CountryDto = source.Country.ToCountryDto()
+                CountryDto = source.Country != null ? source.Country.ToCountryDto() : null
             };
             return result;
         }

@@ -15,5 +15,6 @@ namespace Beers.Common.Service.Contrats
         List<BeerTypeDto> GetByName(string name);
         void CreateBeerType(string type);
         void DeleteBeerType(Guid id);
+        void UpdateBeerType(BeerTypeDto beerTypeDto);
     }
 }

@@ -2,7 +2,7 @@
 
 <h2>Index</h2>
 
-@Html.ActionLink("Create new Beer","Create");
+@Html.ActionLink("Create new Beer", "Create");
 
 <div>
     <table>
@@ -21,13 +21,13 @@
             </th>
         </tr>
 
-        @foreach (var item in Model.BeerViewModelList)
+        @*@foreach (var item in Model.BeerViewModelList)
         {
             <tr>
                 <td>
                     @Html.Label(item.Name)
-                    @*@Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Code })*@
-                    @*@Html.Label(item.Code.ToString())*@
+                    @Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Code })
+                    @Html.Label(item.Code.ToString())
                 </td>
                 <td>
                     @Html.Label(item.Graduation.ToString())
@@ -41,13 +41,12 @@
                 <td>
                     @Html.Label(item.CityDto.ToString())
                 </td>
-                @*<td>
+                <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Code }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Code })
-                </td>*@
+                </td>
             </tr>
-        }
-       
+        }*@
     </table>
 </div>

@@ -1,6 +1,8 @@
-﻿using Beers.services.Implementations;
+﻿using Beers.Common.Service.Contrats;
+using Beers.services.Implementations;
 using Beers.web.Models.Beer;
 using Beers.web.Models.BeerType;
+using Beers.web.Models.City;
 using Beers.web.Models.Country;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,9 @@ namespace Beers.web.Controllers
 {
     public class BeerController : Controller
     {
-        private BeerService _beerService;
-        private BeerTypeService _beerTypeService;
-        private CountryService _countryService;
+        private IBeerService _beerService;
+        private IBeerTypeService _beerTypeService;
+        private ICountryService _countryService;
 
         public BeerController()
         {
@@ -57,7 +59,7 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Create(BeerViewModelCreate model)
         {
-
+            _beerService.CreateBeer(model.ToBeerDto());
             return RedirectToAction("Index");
         }
 

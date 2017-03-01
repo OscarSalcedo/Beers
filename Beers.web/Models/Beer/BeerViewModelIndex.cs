@@ -12,5 +12,6 @@ namespace Beers.web.Models.Beer
             BeerViewModelList = new List<BeerViewModel>(); 
         }
         public IEnumerable<BeerViewModel> BeerViewModelList { get; set; }
+        public BeerViewModelCreate BeerViewModelCreate { get; set; }
     }
 }

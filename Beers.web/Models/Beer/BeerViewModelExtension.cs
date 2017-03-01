@@ -8,7 +8,7 @@ namespace Beers.web.Models.Beer
 {
     public static class BeerViewModelExtension
     {
-        public static BeerDto ToBeerDto(BeerViewModelCreate model)
+        public static BeerDto ToBeerDto(this BeerViewModelCreate model)
         {
             var result = new BeerDto
             {
@@ -19,5 +19,6 @@ namespace Beers.web.Models.Beer
             };
             return result;
         }
+
     }
 }
