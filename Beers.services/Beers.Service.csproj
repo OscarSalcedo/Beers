@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\BeersBaseContext.cs" />
+    <Compile Include="Contracts\IBeerTypeInternalService.cs" />
     <Compile Include="Implementations\BeerService.cs" />
     <Compile Include="Implementations\BeerTypeService.cs" />
     <Compile Include="Implementations\CityService.cs" />
@@ -69,6 +70,10 @@
     <Folder Include="Beers\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Beers.Common.Const\Beers.Common.Const.csproj">
+      <Project>{27332D4D-917B-4F6A-981C-5CC06F0EF77B}</Project>
+      <Name>Beers.Common.Const</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Beers.Common.Service\Beers.Common.Service.csproj">
       <Project>{E3176538-E8EC-4A7B-B7E4-9B465CCDB701}</Project>
       <Name>Beers.Common.Service</Name>

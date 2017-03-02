@@ -35,6 +35,8 @@ namespace Beers.services.Mappers
 
         public static BeerType ToBeerType(this BeerTypeDto source)
         {
+            if (source == null)
+                return null;
             var result = new BeerType
             {
                 Name = source.Description,

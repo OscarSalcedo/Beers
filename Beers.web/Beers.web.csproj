@@ -198,6 +198,7 @@
     <Content Include="Views\BeerType\Details.cshtml" />
     <Content Include="Views\Beer\Index.cshtml" />
     <Content Include="Views\Beer\Create.cshtml" />
+    <Content Include="Views\Beer\_FormCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -211,6 +212,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Beers.Common.Const\Beers.Common.Const.csproj">
+      <Project>{27332D4D-917B-4F6A-981C-5CC06F0EF77B}</Project>
+      <Name>Beers.Common.Const</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Beers.Common.Service\Beers.Common.Service.csproj">
       <Project>{e3176538-e8ec-4a7b-b7e4-9b465ccdb701}</Project>
       <Name>Beers.Common.Service</Name>

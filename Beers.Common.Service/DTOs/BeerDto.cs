@@ -15,5 +15,11 @@ namespace Beers.Common.Service.DTOs
         public BeerTypeDto BeerTypeDto { get; set; }
 
         public CountryDto CountryDto { get; set; }
+
+        public CityDto CityDto { get; set; }
+
+        public Guid BeerTypeId { get; set; }
+        public Guid CountryId { get; set; }
+        public Guid CityId { get; set; }
     }
 }

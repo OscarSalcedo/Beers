@@ -15,7 +15,10 @@ namespace Beers.web.Models.Beer
                 Description = model.Name,
                 Graduation = model.Graduation,
                 BeerTypeDto = model.BeerTypeDto,
-                CountryDto = model.CountryDto
+                CountryDto = model.CountryDto,
+                BeerTypeId = model.BeerTypeId,
+                CityId = model.CityId,
+                CountryId = model.CountryId
             };
             return result;
         }

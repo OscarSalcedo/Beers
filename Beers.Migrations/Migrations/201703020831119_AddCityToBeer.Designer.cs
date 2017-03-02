@@ -7,13 +7,13 @@ namespace Beers.Migrations.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InsertAllCities : IMigrationMetadata
+    public sealed partial class AddCityToBeer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InsertAllCities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCityToBeer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702201039326_InsertAllCities"; }
+            get { return "201703020831119_AddCityToBeer"; }
         }
         
         string IMigrationMetadata.Source

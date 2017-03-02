@@ -51,7 +51,7 @@ namespace Beers.Migrations.Migrations
                 new City { Id= Guid.Parse("1CB7270D-406C-4497-AEFF-80CBBD13CA09"), Name="Padua", Country = context.Country.FirstOrDefault(f=> f.Name == "Italia")},
                 new City { Id= Guid.Parse("1D2C654D-45DC-4583-A2C4-6A0D14CD5BAA"), Name="Roma", Country = context.Country.FirstOrDefault(f=> f.Name == "Italia")}
             };
-            cityList.ForEach(f => context.Cities.AddOrUpdate(f));
+            cityList.ForEach(f => context.City.AddOrUpdate(f));
             context.SaveChanges();
 
         }

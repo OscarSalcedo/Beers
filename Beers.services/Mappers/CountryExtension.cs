@@ -12,6 +12,8 @@ namespace Beers.services.Mappers
     {
         public static CountryDto ToCountryDto(this Country source)
         {
+            if (source == null)
+                return null;
             var result = new CountryDto
             {
                 Code = source.Id,
@@ -37,11 +39,12 @@ namespace Beers.services.Mappers
 
         public static Country ToCountry(this CountryDto source)
         {
+            if (source == null)
+                return null;
             var result = new Country
             {
                 Id = source.Code,
-                Name = source.Description,
-                //Cities = source.CitiesDto
+                Name = source.Description
             };
             return result;
         }

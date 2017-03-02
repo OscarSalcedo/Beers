@@ -44,7 +44,9 @@ namespace Beers.services.Mappers
                 Name = source.Description,
                 Graduation = source.Graduation,
                 BeerType = source.BeerTypeDto.ToBeerType(),
-                Country = source.CountryDto.ToCountry()
+                Country = source.CountryDto.ToCountry(),
+                City = source.CityDto.ToCity()
+
             };
 
             return result;

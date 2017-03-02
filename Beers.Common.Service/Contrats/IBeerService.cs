@@ -11,7 +11,7 @@ namespace Beers.Common.Service.Contrats
     {
         List<BeerDto> GetBeerByBeerType(Guid id);
         bool BeersAssignedToType(Guid id);
-        int CreateBeer(BeerDto beerDto);
+        StateMessageDto CreateBeer(BeerDto beerDto);
 
     }
 }

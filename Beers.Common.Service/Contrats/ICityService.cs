@@ -10,7 +10,7 @@ namespace Beers.Common.Service.Contrats
     public interface ICityService
     {
         List<CityDto> GetAll();
-        List<CityDto> GetById(Guid id);
+        CityDto GetById(Guid id);
         List<CityDto> GetByCountryId(Guid CountryId);
     }
 }

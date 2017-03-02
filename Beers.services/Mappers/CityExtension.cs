@@ -30,7 +30,20 @@ namespace Beers.services.Mappers
             {
                 Code = source.Id,
                 Description = source.Name,
-                CountryDto = source.Country != null ? source.Country.ToCountryDto() : null
+                CountryDto = source.Country.ToCountryDto()
+            };
+            return result;
+        }
+
+        public static City ToCity(this CityDto source)
+        {
+            if (source == null)
+                return null;
+            var result = new City
+            {
+                Id = source.Code,
+                Country = source.CountryDto.ToCountry(),
+                Name = source.Description
             };
             return result;
         }

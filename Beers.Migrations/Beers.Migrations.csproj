@@ -58,9 +58,9 @@
     <Compile Include="Migrations\201702200920184_InsertSpanishCities.Designer.cs">
       <DependentUpon>201702200920184_InsertSpanishCities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702201039326_InsertAllCities.cs" />
-    <Compile Include="Migrations\201702201039326_InsertAllCities.Designer.cs">
-      <DependentUpon>201702201039326_InsertAllCities.cs</DependentUpon>
+    <Compile Include="Migrations\201703020831119_AddCityToBeer.cs" />
+    <Compile Include="Migrations\201703020831119_AddCityToBeer.Designer.cs">
+      <DependentUpon>201703020831119_AddCityToBeer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,8 +86,8 @@
     <EmbeddedResource Include="Migrations\201702200920184_InsertSpanishCities.resx">
       <DependentUpon>201702200920184_InsertSpanishCities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702201039326_InsertAllCities.resx">
-      <DependentUpon>201702201039326_InsertAllCities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703020831119_AddCityToBeer.resx">
+      <DependentUpon>201703020831119_AddCityToBeer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

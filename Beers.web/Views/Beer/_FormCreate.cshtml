@@ -1,12 +1,11 @@
-﻿@using Beers.Common.Const
-@model Beers.web.Models.Beer.BeerViewModelCreate
+﻿@model Beers.web.Models.Beer.BeerViewModelCreate
 
-<h2>Create</h2>
-@*@using (Html.BeginForm("Create", "Beer", FormMethod.Post))
+@using (Html.BeginForm("Create", "Beer", FormMethod.Post))
 {
     <div class="form-control">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m=> m.Name, "El campo nombre es obligatorio")
     </div>
     <div class="form-control">
         @Html.LabelFor(m => m.Graduation)
@@ -24,12 +23,4 @@
     <div>
         <input type="submit" value="Create Beer" />
     </div>
-}*@
-<div>
-    @{Html.RenderPartial("_FormCreate");}
-    @Html.ValidationMessage(GeneralConst.GenericError)
-</div>
-@section scripts{
-    <script src="~/Scripts/Beer/beer.js"></script>
 }
-

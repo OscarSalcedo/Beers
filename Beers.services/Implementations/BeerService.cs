@@ -1,5 +1,8 @@
-﻿using Beers.Common.Service.Contrats;
+﻿using Beers.Common.Const;
+using Beers.Common.Service.Contrats;
 using Beers.Common.Service.DTOs;
+using Beers.Model;
+using Beers.services.Contracts;
 using Beers.services.Mappers;
 using System;
 using System.Collections.Generic;
@@ -11,12 +14,9 @@ namespace Beers.services.Implementations
 {
     public class BeerService : ServiceBase, IBeerService
     {
-        private BeerTypeService _beerTypeService;
-        private CountryService _countryService;
         public BeerService()
         {
-            _beerTypeService = new BeerTypeService();
-            _countryService = new CountryService();
+
         }
         public List<BeerDto> GetBeerByBeerType(Guid id)
         {
@@ -37,24 +37,46 @@ namespace Beers.services.Implementations
             //return result;
         }
 
-        public int CreateBeer(BeerDto beerDto)
+        public Beer GetBeerByName(string name)
         {
-            Guid id;
-            id = Guid.NewGuid();
-            beerDto.Code = id;
+            return Context.Beer.First(w => w.Name == name);
+        }
 
-            var Beer = new BeerDto
+        public StateMessageDto CreateBeer(BeerDto beerDto)
+        {
+
+            var result = new StateMessageDto();
+
+            if (GetBeerByName(beerDto.Description.ToString()).Id != null)
             {
-                Code = id,
-                Description = beerDto.Description,
-                BeerTypeDto = _beerTypeService.GetById(beerDto.BeerTypeDto.Code),
-                CountryDto = _countryService.GetCountryById(beerDto.CountryDto.Code),
-                Graduation = beerDto.Graduation
-            };
+                result.Message = GeneralConst.DuplicateName;
+            }
+            else
+            {
+                Guid id;
+                id = Guid.NewGuid();
+                beerDto.Code = id;
 
-            var newBeer = Beer.ToBeer();
-            Context.Beer.Add(newBeer);
-            var result = Context.SaveChanges();
+
+                var beer = beerDto.ToBeer();
+                beer.Country = Context.Country.Find(beerDto.CountryId);
+                beer.BeerType = Context.BeerType.Find(beerDto.BeerTypeId);
+                beer.City = Context.City.Find(beerDto.CityId);
+                Context.Beer.Add(beer);
+
+                var resultContext = Context.SaveChanges();
+
+                if (resultContext==0)
+                {
+                    result.State = false;
+                }
+                else
+                {
+                    result.State = true;
+                }
+            }
+
+            
 
             return result;
         }

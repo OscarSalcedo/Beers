@@ -10,6 +10,6 @@ namespace Beers.Common.Service.Contrats
     public interface ICountryService
     {
         List<CountryDto> GetAll();
-
+        CountryDto GetCountryById(Guid id);
     }
 }

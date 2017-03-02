@@ -16,9 +16,9 @@ namespace Beers.services.Implementations
             return Context.City.ToCityDtoList();
         }
         
-        public List<CityDto> GetById(Guid id)
+        public CityDto GetById(Guid id)
         {
-            return Context.City.Where(w => w.Id == id).ToCityDtoList();
+            return Context.City.Find(id).ToCityDto();
         }
 
         public List<CityDto> GetByCountryId(Guid CountryId)

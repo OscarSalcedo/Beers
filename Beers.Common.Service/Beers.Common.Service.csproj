@@ -50,6 +50,7 @@
     <Compile Include="DTOs\BeerTypeDto.cs" />
     <Compile Include="DTOs\CityDto.cs" />
     <Compile Include="DTOs\CountryDto.cs" />
+    <Compile Include="DTOs\StateMessageDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

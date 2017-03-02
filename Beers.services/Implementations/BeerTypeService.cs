@@ -5,10 +5,12 @@ using Beers.services.Mappers;
 using System.Linq;
 using System;
 using System.Data.Entity;
+using Beers.Model;
+using Beers.services.Contracts;
 
 namespace Beers.services.Implementations
 {
-    public class BeerTypeService : ServiceBase, IBeerTypeService
+    public class BeerTypeService : ServiceBase, IBeerTypeService, IBeerTypeInternalService
     {
         public BeerTypeService()
         {
@@ -17,6 +19,12 @@ namespace Beers.services.Implementations
         public List<BeerTypeDto> GetAll()
         {
             return Context.BeerType.ToBeerTypeDtoList();
+        }
+
+        public BeerType GetEntityById(Guid id)
+        {
+            return Context.BeerType.Find(id);
+            //return Context.BeerType.FirstOrDefault(f => f.Id == id).ToBeerTypeDto();
         }
 
         public BeerTypeDto GetById(Guid id)

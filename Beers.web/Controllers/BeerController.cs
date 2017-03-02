@@ -1,4 +1,6 @@
-﻿using Beers.Common.Service.Contrats;
+﻿using Beers.Common.Const;
+using Beers.Common.Service.Contrats;
+using Beers.Common.Service.DTOs;
 using Beers.services.Implementations;
 using Beers.web.Models.Beer;
 using Beers.web.Models.BeerType;
@@ -33,25 +35,10 @@ namespace Beers.web.Controllers
 
         public ActionResult Create()
         {
-          
-            var model = new BeerViewModelCreate();
-            
-            model.BeerTypeDtoList = new List<SelectListItem> {
-                //Nuevo elemento list, para mostrar como primer valor
-                new SelectListItem
-                {
-                    Text = "Select",
-                    Value = "0"
-                }
-            }.Union( _beerTypeService.GetAll().ToSelectListItemList());
 
-            model.CountryDtoList = new List<SelectListItem> {
-                new SelectListItem
-                {
-                    Text="Select",
-                    Value="0"
-                }
-            }.Union( _countryService.GetAll().ToSelectListItemList());
+            var model = new BeerViewModelCreate();
+
+            FillData(model);
 
             return View(model);
         }
@@ -59,8 +46,38 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Create(BeerViewModelCreate model)
         {
-            _beerService.CreateBeer(model.ToBeerDto());
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _beerService.CreateBeer(model.ToBeerDto());
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError(GeneralConst.GenericError, "Ya existe una cerveza con ese nombre.");
+                FillData(model);
+                return View(model);
+            }
+        }
+
+        private void FillData(BeerViewModelCreate model)
+        {
+            model.BeerTypeDtoList = new List<SelectListItem> {
+                //Nuevo elemento list, para mostrar como primer valor
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = "0"
+                }
+            }.Union(_beerTypeService.GetAll().ToSelectListItemList());
+
+            model.CountryDtoList = new List<SelectListItem> {
+                new SelectListItem
+                {
+                    Text="Select",
+                    Value="0"
+                }
+            }.Union(_countryService.GetAll().ToSelectListItemList());
+
         }
 
     }

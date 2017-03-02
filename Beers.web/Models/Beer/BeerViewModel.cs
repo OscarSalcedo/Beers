@@ -9,6 +9,7 @@ namespace Beers.web.Models.Beer
 {
     public class BeerViewModel
     {
+        [Required]
         public string Name { get; set; }
 
         [DataType("decimal(2,2)")]
