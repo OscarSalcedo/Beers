@@ -23,5 +23,10 @@ namespace Beers.web.Models.Beer
             return result;
         }
 
+        //public static BeerViewModel ToBeerViewModel(this BeerTypeDto model)
+        //{
+
+        //}
+
     }
 }

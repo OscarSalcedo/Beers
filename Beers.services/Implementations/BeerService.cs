@@ -37,9 +37,10 @@ namespace Beers.services.Implementations
             //return result;
         }
 
-        public Beer GetBeerByName(string name)
+        public bool ExistBeer(string name)
         {
-            return Context.Beer.First(w => w.Name == name);
+            return Context.Beer.Any(w => w.Name == name);
+
         }
 
         public StateMessageDto CreateBeer(BeerDto beerDto)
@@ -47,7 +48,7 @@ namespace Beers.services.Implementations
 
             var result = new StateMessageDto();
 
-            if (GetBeerByName(beerDto.Description.ToString()).Id != null)
+            if (ExistBeer(beerDto.Description.ToString()))
             {
                 result.Message = GeneralConst.DuplicateName;
             }
@@ -66,7 +67,7 @@ namespace Beers.services.Implementations
 
                 var resultContext = Context.SaveChanges();
 
-                if (resultContext==0)
+                if (resultContext == 0)
                 {
                     result.State = false;
                 }
@@ -76,7 +77,7 @@ namespace Beers.services.Implementations
                 }
             }
 
-            
+
 
             return result;
         }

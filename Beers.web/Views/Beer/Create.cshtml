@@ -28,6 +28,7 @@
 <div>
     @{Html.RenderPartial("_FormCreate");}
     @Html.ValidationMessage(GeneralConst.GenericError)
+    @Html.ValidationMessage(GeneralConst.DuplicateName)    
 </div>
 @section scripts{
     <script src="~/Scripts/Beer/beer.js"></script>

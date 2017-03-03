@@ -1,0 +1,11 @@
+﻿@model Beers.web.Models.Beer.BeerViewModelFilter
+
+
+<p>
+    @Html.Label("Description: ")
+    @Html.TextBoxFor(t => t.StringFilter)
+</p>
+<p>
+    @Html.Label("Beer Type: ")
+    @Html.DropDownListFor(m => m.BeerTypeId, Model.BeerTypeDtoList)
+</p>

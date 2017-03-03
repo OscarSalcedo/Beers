@@ -149,6 +149,7 @@
     <Compile Include="Models\Beer\BeerViewModel.cs" />
     <Compile Include="Models\Beer\BeerViewModelCreate.cs" />
     <Compile Include="Models\Beer\BeerViewModelExtension.cs" />
+    <Compile Include="Models\Beer\BeerViewModelFilter.cs" />
     <Compile Include="Models\Beer\BeerViewModelIndex.cs" />
     <Compile Include="Models\City\CityViewModelExtension.cs" />
     <Compile Include="Models\Country\CountryViewModelExtension.cs" />
@@ -199,6 +200,8 @@
     <Content Include="Views\Beer\Index.cshtml" />
     <Content Include="Views\Beer\Create.cshtml" />
     <Content Include="Views\Beer\_FormCreate.cshtml" />
+    <Content Include="Views\Beer\_Filter.cshtml" />
+    <Content Include="Views\Beer\_ResultIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

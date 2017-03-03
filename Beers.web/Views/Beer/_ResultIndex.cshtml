@@ -1,0 +1,29 @@
+﻿@model List<Beers.web.Models.Beer.BeerViewModel>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                Graduation
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Name })
+                    @*@Html.Label(item.Code.ToString())*@
+                </td>
+                <td>
+                    @Html.Label(item.Graduation.ToString())
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+

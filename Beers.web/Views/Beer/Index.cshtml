@@ -5,10 +5,15 @@
 @Html.ActionLink("Create new Beer", "Create");
 
 <div>
-    <table>
+    @{Html.RenderPartial("_Filter", Model.Filter);}
+</div>
+
+<div>
+    @*@{Html.RenderPartial("_ResultIndex", Model.BeerViewModelList.ToList());}*@
+    @*<table>
         <tr>
             <th>
-                Name
+                Description
             </th>
             <th>
                 Graduation
@@ -19,9 +24,12 @@
             <th>
                 Country
             </th>
+            <th>
+                City
+            </th>
         </tr>
 
-        @*@foreach (var item in Model.BeerViewModelList)
+        @foreach (var item in Model.BeerViewModelList)
         {
             <tr>
                 <td>
@@ -47,6 +55,6 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.Code })
                 </td>
             </tr>
-        }*@
-    </table>
+        }
+    </table>*@
 </div>

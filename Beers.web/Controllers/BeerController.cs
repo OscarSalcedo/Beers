@@ -19,18 +19,20 @@ namespace Beers.web.Controllers
         private IBeerService _beerService;
         private IBeerTypeService _beerTypeService;
         private ICountryService _countryService;
+        private ICityService _cityService;
 
         public BeerController()
         {
             _beerService = new BeerService();
             _beerTypeService = new BeerTypeService();
             _countryService = new CountryService();
+            _cityService = new CityService();
         }
 
         public ActionResult Index()
         {
             var model = new BeerViewModelIndex();
-            return View();
+            return View(model);
         }
 
         public ActionResult Create()
@@ -38,7 +40,7 @@ namespace Beers.web.Controllers
 
             var model = new BeerViewModelCreate();
 
-            FillData(model);
+            FillData(model, false);
 
             return View(model);
         }
@@ -46,20 +48,44 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Create(BeerViewModelCreate model)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    _beerService.CreateBeer(model.ToBeerDto());
+            //    return RedirectToAction("Index");
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError(GeneralConst.GenericError, "Ya existe una cerveza con ese nombre.");
+            //    FillData(model);
+            //    return View(model);
+            //}
+
             if (ModelState.IsValid)
             {
-                _beerService.CreateBeer(model.ToBeerDto());
-                return RedirectToAction("Index");
+                var StateCreate = _beerService.CreateBeer(model.ToBeerDto());
+
+                if (StateCreate.State)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(GeneralConst.DuplicateName, "Duplicate Name");
+                    FillData(model, true);
+                    return View(model);
+                }
             }
             else
             {
-                ModelState.AddModelError(GeneralConst.GenericError, "Ya existe una cerveza con ese nombre.");
-                FillData(model);
+                ModelState.AddModelError(GeneralConst.GenericError, "Some information is empty");
+                FillData(model, true);
                 return View(model);
             }
+            
+
         }
 
-        private void FillData(BeerViewModelCreate model)
+        private void FillData(BeerViewModelCreate model, bool reload)
         {
             model.BeerTypeDtoList = new List<SelectListItem> {
                 //Nuevo elemento list, para mostrar como primer valor
@@ -78,6 +104,10 @@ namespace Beers.web.Controllers
                 }
             }.Union(_countryService.GetAll().ToSelectListItemList());
 
+            if (reload && model.CountryId != Guid.Empty)
+            {
+                model.CityDtoList = _cityService.GetByCountryId(model.CountryId).ToSelectListItemList();
+            }
         }
 
     }
