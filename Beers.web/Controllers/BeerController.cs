@@ -32,9 +32,29 @@ namespace Beers.web.Controllers
         public ActionResult Index()
         {
             var model = new BeerViewModelIndex();
+            model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
+            model.BeerViewModelList = _beerService.GetAllBeers().ToBeerViewModel();
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Filter(BeerViewModelFilter filter)
+        {
+            var model = new BeerViewModelIndex(filter);
+
+            if (string.IsNullOrWhiteSpace(filter.StringFilter))
+            {
+                model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
+                model.BeerViewModelList =_beerService.GetAllBeers().ToBeerViewModel();
+            }
+            else
+            {
+                model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
+                model.BeerViewModelList = _beerService.GetBeerByName(filter.StringFilter).ToBeerViewModel();
+            }
+
+            return View("Index", model);
+        }
         public ActionResult Create()
         {
 
@@ -48,18 +68,6 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Create(BeerViewModelCreate model)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _beerService.CreateBeer(model.ToBeerDto());
-            //    return RedirectToAction("Index");
-            //}
-            //else
-            //{
-            //    ModelState.AddModelError(GeneralConst.GenericError, "Ya existe una cerveza con ese nombre.");
-            //    FillData(model);
-            //    return View(model);
-            //}
-
             if (ModelState.IsValid)
             {
                 var StateCreate = _beerService.CreateBeer(model.ToBeerDto());

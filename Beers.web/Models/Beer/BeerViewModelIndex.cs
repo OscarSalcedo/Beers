@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Beers.web.Models.Beer
 {
-    public class BeerViewModelIndex
+    public class BeerViewModelIndex : BeerViewModel
     {
         public BeerViewModelIndex()
         {
@@ -18,7 +18,7 @@ namespace Beers.web.Models.Beer
             Filter = filter;
         }
         public BeerViewModelFilter Filter { get; set; }
-        public List<BeerViewModel> BeerViewModelList { get; set; }
+        public IEnumerable<BeerViewModel> BeerViewModelList { get; set; }
         public BeerViewModelCreate BeerViewModelCreate { get; set; }
     }
 }

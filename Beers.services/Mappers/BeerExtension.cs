@@ -15,13 +15,20 @@ namespace Beers.services.Mappers
             var result = new BeerDto
             {
                 Code = source.Id,
+                Graduation = source.Graduation,
                 Description = source.Name,
-                BeerTypeDto = source.BeerType.ToBeerTypeDto()
+                BeerTypeDto = source.BeerType.ToBeerTypeDto(),
+                BeerTypeId = source.BeerType.Id,
+                CountryDto = source.Country.ToCountryDto(),
+                CountryId = source.Country.Id,
+                CityDto = source.City.ToCityDto(),
+                CityId = source.City.Id
+
             };
 
             return result;
         }
-        public static List<BeerDto> ToBeerDtoList(this List<Beer> source)
+        public static List<BeerDto> ToBeerDtoList(this IEnumerable<Beer> source)
         {
             var resultList = new List<BeerDto>();
 

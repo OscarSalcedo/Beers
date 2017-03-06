@@ -6,9 +6,11 @@ using Beers.services.Contracts;
 using Beers.services.Mappers;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Beers.services.Implementations
 {
@@ -17,6 +19,27 @@ namespace Beers.services.Implementations
         public BeerService()
         {
 
+        }
+
+        public List<BeerDto> GetAllBeers()
+        {
+            //var result = Context.Beer.ToList().ToBeerDtoList();
+
+            if (Context.Beer.Any())
+            {
+                return Context.Beer.Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        public List<BeerDto> GetBeerByName(string source)
+        {
+            return Context.Beer.Where(w => w.Name.Contains(source)).Include(i=>i.BeerType).Include(i=>i.Country).Include(i=>i.City).ToBeerDtoList();
         }
         public List<BeerDto> GetBeerByBeerType(Guid id)
         {

@@ -9,6 +9,15 @@
             <th>
                 Graduation
             </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                City
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -20,6 +29,15 @@
                 </td>
                 <td>
                     @Html.Label(item.Graduation.ToString())
+                </td>
+                <td>
+                    @Html.Label(item.BeerTypeDto.Description)
+                </td>
+                <td>
+                    @Html.Label(item.CountryDto.Description)
+                </td>
+                <td>
+                    @Html.Label(item.CityDto.Description)
                 </td>
             </tr>
         }

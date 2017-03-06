@@ -9,11 +9,17 @@ namespace Beers.services.Mappers
     {
         public static BeerTypeDto ToBeerTypeDto(this BeerType source)
         {
-            var result = new BeerTypeDto
+            var result = new BeerTypeDto();
+
+            if (source != null)
             {
-                Code = source.Id,
-                Description = source.Name
-            };
+                result = new BeerTypeDto
+                {
+                    Code = source.Id,
+                    Description = source.Name
+                };
+                
+            }
             return result;
         }
 

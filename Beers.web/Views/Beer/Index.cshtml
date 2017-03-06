@@ -4,57 +4,14 @@
 
 @Html.ActionLink("Create new Beer", "Create");
 
-<div>
-    @{Html.RenderPartial("_Filter", Model.Filter);}
-</div>
+@using (@Html.BeginForm("Filter","Beer",FormMethod.Post))
+{ 
+    <div>
+        @{Html.RenderPartial("_Filter", Model.Filter);}
+        <input type="submit"  value="Search" />
+    </div>
 
-<div>
-    @*@{Html.RenderPartial("_ResultIndex", Model.BeerViewModelList.ToList());}*@
-    @*<table>
-        <tr>
-            <th>
-                Description
-            </th>
-            <th>
-                Graduation
-            </th>
-            <th>
-                Type
-            </th>
-            <th>
-                Country
-            </th>
-            <th>
-                City
-            </th>
-        </tr>
-
-        @foreach (var item in Model.BeerViewModelList)
-        {
-            <tr>
-                <td>
-                    @Html.Label(item.Name)
-                    @Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Name })
-                    @Html.Label(item.Code.ToString())
-                </td>
-                <td>
-                    @Html.Label(item.Graduation.ToString())
-                </td>
-                <td>
-                    @Html.Label(item.BeerTypeDto.ToString())
-                </td>
-                <td>
-                    @Html.Label(item.CountryDto.ToString())
-                </td>
-                <td>
-                    @Html.Label(item.CityDto.ToString())
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Code }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Code })
-                </td>
-            </tr>
-        }
-    </table>*@
-</div>
+    <div>
+        @{Html.RenderPartial("_ResultIndex", Model.BeerViewModelList.ToList());}
+    </div>
+}

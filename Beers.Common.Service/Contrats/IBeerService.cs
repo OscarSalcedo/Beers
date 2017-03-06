@@ -13,5 +13,8 @@ namespace Beers.Common.Service.Contrats
         bool BeersAssignedToType(Guid id);
         StateMessageDto CreateBeer(BeerDto beerDto);
 
+        List<BeerDto> GetAllBeers();
+        List<BeerDto> GetBeerByName(string source);
+
     }
 }

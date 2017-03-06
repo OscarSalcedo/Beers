@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Beers.web.Models.Beer
 {
@@ -23,7 +24,38 @@ namespace Beers.web.Models.Beer
             return result;
         }
 
-        //public static BeerViewModel ToBeerViewModel(this BeerTypeDto model)
+        public static BeerViewModel ToBeerViewModel(this BeerDto source)
+        {
+            var result = new BeerViewModel
+            {
+                Name = source.Description,
+                Graduation = source.Graduation,
+                BeerTypeDto = source.BeerTypeDto,
+                CountryDto = source.CountryDto,
+                CityDto = source.CityDto
+
+            };
+
+            return result;
+        }
+
+        public static List<BeerViewModel> ToBeerViewModel (this List<BeerDto> source)
+        {
+            var resultList = new List<BeerViewModel>();
+
+            if (source.Count>0)
+            {
+                foreach (var item in source)
+                {
+                    resultList.Add(item.ToBeerViewModel());
+                }
+            }
+
+
+            return resultList;
+        }
+
+        //public static IEnumerable<SelectListItem> ToBeerViewModelFilter(this List<BeerTypeDto> soruce)
         //{
 
         //}

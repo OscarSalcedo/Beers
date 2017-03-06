@@ -8,6 +8,10 @@ namespace Beers.web.Models.Beer
 {
     public class BeerViewModelFilter :BeerViewModel
     {
+        public BeerViewModelFilter()
+        {
+            BeerTypeDtoList = new List<SelectListItem>();
+        }
         public string StringFilter { get; set; }
         public IEnumerable<SelectListItem> BeerTypeDtoList { get; set; }
         public Guid BeerTypeId { get; set; }
