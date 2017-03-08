@@ -148,6 +148,7 @@
     <Compile Include="Models\BeerType\BeerTypeViewModelIndex.cs" />
     <Compile Include="Models\Beer\BeerViewModel.cs" />
     <Compile Include="Models\Beer\BeerViewModelCreate.cs" />
+    <Compile Include="Models\Beer\BeerViewModelDetails.cs" />
     <Compile Include="Models\Beer\BeerViewModelExtension.cs" />
     <Compile Include="Models\Beer\BeerViewModelFilter.cs" />
     <Compile Include="Models\Beer\BeerViewModelIndex.cs" />

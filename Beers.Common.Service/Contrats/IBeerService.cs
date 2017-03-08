@@ -18,6 +18,7 @@ namespace Beers.Common.Service.Contrats
         List<BeerDto> GetBeerByType(Guid typeId);
         BeerDto GetBeerById(Guid beerId);
         List<BeerDto> GetBeerByFilter(FilterOptionsDto filterOptions);
+        int UpdateBeer(BeerDto source);
         //BeerDto GetSingleBeerByName(string name);
 
     }

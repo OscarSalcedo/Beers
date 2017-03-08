@@ -131,10 +131,16 @@ namespace Beers.web.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            var model = new BeerViewModel();
-            model = _beerService.GetBeerById(id).ToBeerViewModel();
+            var model = new BeerViewModelDetails();
+            model = _beerService.GetBeerById(id).ToBeerViewModelDetails();
+            model.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
             return View("Details", model);
         }
 
+        public ActionResult Update(BeerViewModelDetails details)
+        {
+            _beerService.UpdateBeer(details.ModelDetailsToBeerDto());
+            return RedirectToAction("Index");
+        }
     }
 }

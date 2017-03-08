@@ -24,6 +24,20 @@ namespace Beers.web.Models.Beer
             return result;
         }
 
+        public static BeerDto ModelDetailsToBeerDto(this BeerViewModelDetails source)
+        {
+            var result = new BeerDto
+            {
+                Code = source.Id,
+                Graduation = source.Graduation,
+                BeerTypeId = source.BeerTypeDto.Code,
+                CountryId = source.CountryDto.Code,
+                CityId = source.CityDto.Code
+            };
+
+            return result;
+        }
+
         public static BeerViewModel ToBeerViewModel(this BeerDto source)
         {
             var result = new BeerViewModel
@@ -40,11 +54,26 @@ namespace Beers.web.Models.Beer
             return result;
         }
 
-        public static List<BeerViewModel> ToBeerViewModelList (this List<BeerDto> source)
+        public static BeerViewModelDetails ToBeerViewModelDetails(this BeerDto source)
+        {
+            var result = new BeerViewModelDetails
+            {
+                Id = source.Code,
+                Name = source.Description,
+                Graduation = source.Graduation,
+                BeerTypeDto = source.BeerTypeDto,
+                CountryDto = source.CountryDto,
+                CityDto = source.CityDto
+            };
+
+            return result;
+        }
+
+        public static List<BeerViewModel> ToBeerViewModelList(this List<BeerDto> source)
         {
             var resultList = new List<BeerViewModel>();
 
-            if (source.Count>0)
+            if (source.Count > 0)
             {
                 foreach (var item in source)
                 {
@@ -58,7 +87,7 @@ namespace Beers.web.Models.Beer
         {
             List<SelectListItem> resultList = new List<SelectListItem>();
 
-            if (source.Count>0)
+            if (source.Count > 0)
             {
                 foreach (var item in source)
                 {

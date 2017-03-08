@@ -39,7 +39,7 @@ namespace Beers.services.Implementations
 
         public BeerDto GetBeerById(Guid beerId)
         {
-            return FindWithInclude(f => f.Id == beerId, GetIncludes()).ToBeerDto();
+            return FindWithInclude<Beer>(f => f.Id == beerId, GetIncludes()).ToBeerDto();
         }
 
         public List<BeerDto> GetBeerByFilter(FilterOptionsDto filterOptions)
@@ -144,6 +144,18 @@ namespace Beers.services.Implementations
 
 
             return result;
+        }
+
+        public int UpdateBeer(BeerDto source)
+        {
+            var entityToModify = Context.Beer.Find(source.Code);
+            entityToModify.Name = source.Description;
+            entityToModify.Graduation = source.Graduation;
+            entityToModify.Country = Context.Country.Find(source.CountryId);
+            entityToModify.BeerType = Context.BeerType.Find(source.BeerTypeId);
+            entityToModify.City = Context.City.Find(source.CityId);
+
+            return Context.SaveChanges();
         }
 
         private List<Expression<Func<Beer,object>>> GetIncludes()

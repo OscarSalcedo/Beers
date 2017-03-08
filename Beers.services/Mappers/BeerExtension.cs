@@ -29,7 +29,6 @@ namespace Beers.services.Mappers
             return result;
         }
 
-
         public static List<BeerDto> ToBeerDtoList(this IEnumerable<Beer> source)
         {
             var resultList = new List<BeerDto>();

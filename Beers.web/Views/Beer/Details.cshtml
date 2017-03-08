@@ -1,23 +1,31 @@
-﻿@model Beers.web.Models.Beer.BeerViewModel
+﻿@model Beers.web.Models.Beer.BeerViewModelDetails
 
 <h2>Details</h2>
 
-<p class="form-control">
-@Html.DisplayNameFor(m => m.Name):
-@Html.DisplayFor(m => m.Name)
-</p>
-<p class="form-control">
-    @Html.DisplayNameFor(m => m.Graduation):
-    @Html.TextBoxFor(m => m.Graduation)
-</p>
-<p class="form-control" readonly="yes">
-    @Html.DisplayNameFor(m => m.BeerTypeDto.Description):
-    @Html.DisplayFor(m => m.BeerTypeDto.Description)
-</p>
-<p class="form-control">
-    @Html.DisplayNameFor(m => m.CountryDto.Description)
-</p>
-<p class="form-control">
-    @Html.DisplayNameFor(m => m.CityDto.Description)
-</p>
+@using (Html.BeginForm("Update", "Beer", FormMethod.Post))
+{
 
+    @Html.HiddenFor(h => h.Id)
+    <p class="form-control">
+    @Html.DisplayNameFor(m => m.Name):
+    @Html.TextBoxFor(m => m.Name)
+    </p>
+    <p class="form-control">
+        @Html.DisplayNameFor(m => m.Graduation):
+        @Html.TextBoxFor(m => m.Graduation)
+    </p>
+    <p class="form-control">
+        @Html.Label("Beer Type:")
+        @Html.DropDownListFor(m => m.BeerTypeDto.Code, Model.BeerTypeDtoList)
+    </p>
+    <p class="form-control">
+        @Html.Label("Country:")
+        @Html.TextBoxFor(m => m.CountryDto.Code)
+    </p>
+    <p class="form-control">
+        @Html.Label("City:")
+        @Html.TextBoxFor(m => m.CityDto.Code)
+    </p>
+
+    <input type="submit"  value="Save" class="btn btn-default"/>
+}
