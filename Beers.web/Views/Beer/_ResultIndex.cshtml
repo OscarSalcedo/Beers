@@ -24,8 +24,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name.ToString(), "Edit", new { id = item.Name })
-                    @*@Html.Label(item.Code.ToString())*@
+                    @Html.ActionLink(item.Name.ToString(), "Edit", new { Id = item.Id })
                 </td>
                 <td>
                     @Html.Label(item.Graduation.ToString())

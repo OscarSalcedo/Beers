@@ -202,6 +202,7 @@
     <Content Include="Views\Beer\_FormCreate.cshtml" />
     <Content Include="Views\Beer\_Filter.cshtml" />
     <Content Include="Views\Beer\_ResultIndex.cshtml" />
+    <Content Include="Views\Beer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

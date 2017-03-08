@@ -28,6 +28,7 @@ namespace Beers.web.Models.Beer
         {
             var result = new BeerViewModel
             {
+                Id = source.Code,
                 Name = source.Description,
                 Graduation = source.Graduation,
                 BeerTypeDto = source.BeerTypeDto,
@@ -39,7 +40,7 @@ namespace Beers.web.Models.Beer
             return result;
         }
 
-        public static List<BeerViewModel> ToBeerViewModel (this List<BeerDto> source)
+        public static List<BeerViewModel> ToBeerViewModelList (this List<BeerDto> source)
         {
             var resultList = new List<BeerViewModel>();
 
@@ -50,9 +51,32 @@ namespace Beers.web.Models.Beer
                     resultList.Add(item.ToBeerViewModel());
                 }
             }
+            return resultList;
+        }
 
+        public static IEnumerable<SelectListItem> ToSelectListItemList(this List<BeerDto> source)
+        {
+            List<SelectListItem> resultList = new List<SelectListItem>();
+
+            if (source.Count>0)
+            {
+                foreach (var item in source)
+                {
+                    resultList.Add(item.ToSelectListItem());
+                }
+            }
 
             return resultList;
+        }
+
+        public static SelectListItem ToSelectListItem(this BeerDto source)
+        {
+            var result = new SelectListItem();
+
+            result.Value = source.Code.ToString();
+            result.Text = source.Description;
+
+            return result;
         }
 
         //public static IEnumerable<SelectListItem> ToBeerViewModelFilter(this List<BeerTypeDto> soruce)

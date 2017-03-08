@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Beers.services.Implementations
 {
@@ -34,13 +35,54 @@ namespace Beers.services.Implementations
                 return null;
             }
 
+        }
 
+        public BeerDto GetBeerById(Guid beerId)
+        {
+            return FindWithInclude(f => f.Id == beerId, GetIncludes()).ToBeerDto();
+        }
+
+        public List<BeerDto> GetBeerByFilter(FilterOptionsDto filterOptions)
+        {
+            if (filterOptions.Id == Guid.Empty && !string.IsNullOrWhiteSpace(filterOptions.StringFilter))
+            {
+                //Just with name option
+                return Context.Beer.Where(w => w.Name == filterOptions.StringFilter).Include(i=> i.BeerType).Include(i=> i.Country).Include(i=> i.City).ToBeerDtoList();
+            }
+            else if (filterOptions.Id != Guid.Empty && string.IsNullOrWhiteSpace(filterOptions.StringFilter))
+            {
+                //Just with type option
+                return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+            }
+            else if (filterOptions.Id != Guid.Empty && !string.IsNullOrWhiteSpace(filterOptions.StringFilter))
+            {
+                //Both Filters
+                return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id && w.Name == filterOptions.StringFilter).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+            }
+            else
+            {
+                //Without Filters
+                return GetAllBeers();
+            }
+        }
+
+        public List<BeerDto> GetBeerByType(Guid typeId)
+        {
+            return Context.Beer.Where(w => w.BeerType.Id == typeId).Include(i=>i.Country).Include(i=>i.City).Include(i=>i.BeerType).ToBeerDtoList();
         }
 
         public List<BeerDto> GetBeerByName(string source)
         {
             return Context.Beer.Where(w => w.Name.Contains(source)).Include(i=>i.BeerType).Include(i=>i.Country).Include(i=>i.City).ToBeerDtoList();
         }
+
+        /*public BeerDto GetSingleBeerByName(string name)
+        {
+            var element = Context.Beer.Where(w => w.Name == name).Select(s => s.Id).First();
+            //var id = element.ElementAt(0).ToString();
+            return Context.Beer.Where(w => w.Id == element).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).First().ToBeerDto();
+        }*/
+
         public List<BeerDto> GetBeerByBeerType(Guid id)
         {
             return Context.Beer.Where(w => w.BeerType.Id == id).ToList().ToBeerDtoList();
@@ -63,7 +105,6 @@ namespace Beers.services.Implementations
         public bool ExistBeer(string name)
         {
             return Context.Beer.Any(w => w.Name == name);
-
         }
 
         public StateMessageDto CreateBeer(BeerDto beerDto)
@@ -102,6 +143,15 @@ namespace Beers.services.Implementations
 
 
 
+            return result;
+        }
+
+        private List<Expression<Func<Beer,object>>> GetIncludes()
+        {
+            List<Expression<Func<Beer, object>>> result = new List<Expression<Func<Beer, object>>>();
+            result.Add(a => a.BeerType);
+            result.Add(a => a.City);
+            result.Add(a => a.Country);
             return result;
         }
 

@@ -9,6 +9,9 @@ namespace Beers.web.Models.Beer
 {
     public class BeerViewModel
     {
+
+        public Guid Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 

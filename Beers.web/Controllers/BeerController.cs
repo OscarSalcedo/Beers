@@ -32,26 +32,36 @@ namespace Beers.web.Controllers
         public ActionResult Index()
         {
             var model = new BeerViewModelIndex();
-            model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
-            model.BeerViewModelList = _beerService.GetAllBeers().ToBeerViewModel();
+            model.Filter.BeerTypeDtoList = new List<SelectListItem> {
+
+                new SelectListItem
+                {
+                    Text="Select",
+                    Value="0"
+                }
+            }.Union(_beerTypeService.GetAll().ToSelectListItemList());
+            model.BeerViewModelList = _beerService.GetAllBeers().ToBeerViewModelList();
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Filter(BeerViewModelFilter filter)
         {
-            var model = new BeerViewModelIndex(filter);
+            var FilterOptions = new FilterOptionsDto();
 
-            if (string.IsNullOrWhiteSpace(filter.StringFilter))
+            FilterOptions.StringFilter = filter.StringFilter;
+            FilterOptions.Id = filter.BeerTypeId;
+
+            var model = new BeerViewModelIndex(filter);
+            model.Filter.BeerTypeDtoList = new List<SelectListItem>
             {
-                model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
-                model.BeerViewModelList =_beerService.GetAllBeers().ToBeerViewModel();
-            }
-            else
-            {
-                model.Filter.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
-                model.BeerViewModelList = _beerService.GetBeerByName(filter.StringFilter).ToBeerViewModel();
-            }
+                new SelectListItem
+                {
+                    Text="Select",
+                    Value="0"
+                }
+            }.Union(_beerTypeService.GetAll().ToSelectListItemList());
+            model.BeerViewModelList = _beerService.GetBeerByFilter(FilterOptions).ToBeerViewModelList();
 
             return View("Index", model);
         }
@@ -61,6 +71,7 @@ namespace Beers.web.Controllers
             var model = new BeerViewModelCreate();
 
             FillData(model, false);
+
 
             return View(model);
         }
@@ -89,7 +100,7 @@ namespace Beers.web.Controllers
                 FillData(model, true);
                 return View(model);
             }
-            
+
 
         }
 
@@ -116,6 +127,13 @@ namespace Beers.web.Controllers
             {
                 model.CityDtoList = _cityService.GetByCountryId(model.CountryId).ToSelectListItemList();
             }
+        }
+
+        public ActionResult Edit(Guid id)
+        {
+            var model = new BeerViewModel();
+            model = _beerService.GetBeerById(id).ToBeerViewModel();
+            return View("Details", model);
         }
 
     }
