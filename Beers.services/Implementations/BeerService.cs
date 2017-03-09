@@ -71,12 +71,14 @@ namespace Beers.services.Implementations
 
         public List<BeerDto> GetBeerByType(Guid typeId)
         {
-            return Context.Beer.Where(w => w.BeerType.Id == typeId).Include(i=>i.Country).Include(i=>i.City).Include(i=>i.BeerType).ToBeerDtoList();
+            //return Context.Beer.Where(w => w.BeerType.Id == typeId).Include(i=>i.Country).Include(i=>i.City).Include(i=>i.BeerType).ToBeerDtoList();
+            return WhereWithInclude<Beer>(w => w.BeerType.Id == typeId, GetIncludes()).ToBeerDtoList();
         }
 
         public List<BeerDto> GetBeerByName(string source)
         {
-            return Context.Beer.Where(w => w.Name.Contains(source)).Include(i=>i.BeerType).Include(i=>i.Country).Include(i=>i.City).ToBeerDtoList();
+            //return Context.Beer.Where(w => w.Name.Contains(source)).Include(i=>i.BeerType).Include(i=>i.Country).Include(i=>i.City).ToBeerDtoList();
+            return WhereWithInclude<Beer>(w => w.Name.Contains(source), GetIncludes()).ToBeerDtoList();
         }
 
         /*public BeerDto GetSingleBeerByName(string name)
