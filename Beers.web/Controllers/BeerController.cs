@@ -129,17 +129,27 @@ namespace Beers.web.Controllers
             }
         }
 
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(Guid id, Guid countryId)
         {
             var model = new BeerViewModelDetails();
             model = _beerService.GetBeerById(id).ToBeerViewModelDetails();
             model.BeerTypeDtoList = _beerTypeService.GetAll().ToSelectListItemList();
+
+            model.CountryDtoList = _countryService.GetAll().ToSelectListItemList();
+
+            model.CityDtoList = _cityService.GetByCountryId(countryId).ToSelectListItemList();
             return View("Details", model);
         }
 
         public ActionResult Update(BeerViewModelDetails details)
         {
             _beerService.UpdateBeer(details.ModelDetailsToBeerDto());
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(Guid Id)
+        {
+            _beerService.DeleteBeerById(Id);
             return RedirectToAction("Index");
         }
     }

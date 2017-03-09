@@ -29,6 +29,7 @@ namespace Beers.web.Models.Beer
             var result = new BeerDto
             {
                 Code = source.Id,
+                Description = source.Name,
                 Graduation = source.Graduation,
                 BeerTypeId = source.BeerTypeDto.Code,
                 CountryId = source.CountryDto.Code,

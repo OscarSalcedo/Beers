@@ -24,7 +24,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name.ToString(), "Edit", new { Id = item.Id })
+                    @Html.ActionLink(item.Name.ToString(), "Edit", new { Id = item.Id, CountryId = item.CountryDto.Code })
                 </td>
                 <td>
                     @Html.Label(item.Graduation.ToString())
@@ -37,6 +37,9 @@
                 </td>
                 <td>
                     @Html.Label(item.CityDto.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

@@ -35,5 +35,11 @@ namespace Beers.services.Implementations
             return includes.Aggregate(entityContext.Where(condition).AsQueryable(), (current, include) => current.Include(include)).FirstOrDefault();
         }
 
+        public List<TEntity> WhereWithInclude<TEntity>(Expression<Func<TEntity,bool>> condition, List<Expression<Func<TEntity, object>>> includes) where TEntity : class
+        {
+            var entityContext = _context.Set<TEntity>();
+            return includes.Aggregate(entityContext.Where(condition).AsQueryable(), (current, include) => current.Include(include)).ToList();
+        }
+
     }
 }

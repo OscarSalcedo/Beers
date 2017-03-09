@@ -88,8 +88,9 @@ namespace Beers.web.Controllers
         [HttpPost]
         public ActionResult Update(BeerTypeViewModel details)
         {
-            
+
             _beerTypeService.UpdateBeerType(details.ToBeerTypeDto());
+
             return RedirectToAction("Index");
         }
 

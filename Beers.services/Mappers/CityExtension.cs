@@ -24,13 +24,13 @@ namespace Beers.services.Mappers
 
             return resultList;
         }
+
         public static CityDto ToCityDto(this City source)
         {
             var result = new CityDto
             {
                 Code = source.Id,
-                Description = source.Name,
-                CountryDto = source.Country.ToCountryDto()
+                Description = source.Name
             };
             return result;
         }

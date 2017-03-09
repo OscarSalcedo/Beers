@@ -46,18 +46,21 @@ namespace Beers.services.Implementations
         {
             if (filterOptions.Id == Guid.Empty && !string.IsNullOrWhiteSpace(filterOptions.StringFilter))
             {
-                //Just with name option
-                return Context.Beer.Where(w => w.Name == filterOptions.StringFilter).Include(i=> i.BeerType).Include(i=> i.Country).Include(i=> i.City).ToBeerDtoList();
+                //****Just with name option
+                //return Context.Beer.Where(w => w.Name == filterOptions.StringFilter).Include(i=> i.BeerType).Include(i=> i.Country).Include(i=> i.City).ToBeerDtoList();
+                return WhereWithInclude<Beer>(w => w.Name == filterOptions.StringFilter, GetIncludes()).ToBeerDtoList();
             }
             else if (filterOptions.Id != Guid.Empty && string.IsNullOrWhiteSpace(filterOptions.StringFilter))
             {
-                //Just with type option
-                return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+                //****Just with type option
+                //return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+                return WhereWithInclude<Beer>(w => w.BeerType.Id == filterOptions.Id, GetIncludes()).ToBeerDtoList();
             }
             else if (filterOptions.Id != Guid.Empty && !string.IsNullOrWhiteSpace(filterOptions.StringFilter))
             {
-                //Both Filters
-                return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id && w.Name == filterOptions.StringFilter).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+                //****Both Filters
+                //return Context.Beer.Where(w => w.BeerType.Id == filterOptions.Id && w.Name == filterOptions.StringFilter).Include(i => i.BeerType).Include(i => i.Country).Include(i => i.City).ToBeerDtoList();
+                return WhereWithInclude<Beer>(w => w.BeerType.Id == filterOptions.Id && w.Name == filterOptions.StringFilter, GetIncludes()).ToBeerDtoList();
             }
             else
             {
@@ -144,6 +147,13 @@ namespace Beers.services.Implementations
 
 
             return result;
+        }
+
+        public int DeleteBeerById(Guid Id)
+        {
+            var BeerToDelete = Context.Beer.Find(Id);
+            Context.Beer.Remove(BeerToDelete);
+            return Context.SaveChanges();
         }
 
         public int UpdateBeer(BeerDto source)

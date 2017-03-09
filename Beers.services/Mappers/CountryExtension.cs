@@ -17,7 +17,7 @@ namespace Beers.services.Mappers
             var result = new CountryDto
             {
                 Code = source.Id,
-                Description = source.Name,
+                Description = source.Name
                 //CitiesDto = source.Cities
             };
             return result;

@@ -73,7 +73,6 @@ namespace Beers.services.Implementations
             entityToModify.Name = beerTypeDto.Description;
 
             Context.SaveChanges();
-
         }
 
 
