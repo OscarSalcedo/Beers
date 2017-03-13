@@ -18,12 +18,23 @@ namespace Beers.services.Mappers
                 Graduation = source.Graduation,
                 Description = source.Name,
                 BeerTypeDto = source.BeerType.ToBeerTypeDto(),
-                BeerTypeId = source.BeerType.Id,
                 CountryDto = source.Country.ToCountryDto(),
-                CountryId = source.Country.Id,
                 CityDto = source.City.ToCityDto(),
-                CityId = source.City.Id
+            };
 
+            return result;
+        }
+
+        public static BeerDto ToBeerDetailDto(this Beer source)
+        {
+            var result = new BeerDto
+            {
+                Code = source.Id,
+                Graduation = source.Graduation,
+                Description = source.Name,
+                BeerTypeId = source.BeerType.Id,
+                CountryId = source.Country.Id,
+                CityId = source.City.Id
             };
 
             return result;

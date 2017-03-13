@@ -16,15 +16,15 @@
     </p>
     <p class="form-control">
         @Html.Label("Beer Type:")
-        @Html.DropDownListFor(m => m.BeerTypeDto.Code, Model.BeerTypeDtoList)
+        @Html.DropDownListFor(m => m.BeerTypeId, Model.BeerTypeDtoList)
     </p>
     <p class="form-control">
         @Html.Label("Country:")
-        @Html.DropDownListFor(m => m.CountryDto.Code, Model.CountryDtoList, new { id = "cmbCountry" })
+        @Html.DropDownListFor(m => m.CountryId, Model.CountryDtoList, new { id = "cmbCountry" })
     </p>
     <p class="form-control">
         @Html.Label("City:")
-        @Html.DropDownListFor(m => m.CityDto.Code, Model.CityDtoList, new { id = "cmbCities" })
+        @Html.DropDownListFor(m => m.CityId, Model.CityDtoList, new { id = "cmbCities" })
     </p>
 
     <input type="submit"  value="Save" class="btn btn-default"/>

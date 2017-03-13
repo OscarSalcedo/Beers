@@ -64,7 +64,7 @@ namespace Beers.web.Controllers
 
 
         }
-        //[HttpPost]
+        [HttpDelete]
         public ActionResult Delete(Guid id)
         {
             if (!_beerService.BeersAssignedToType(id))

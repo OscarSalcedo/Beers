@@ -62,9 +62,9 @@ namespace Beers.web.Models.Beer
                 Id = source.Code,
                 Name = source.Description,
                 Graduation = source.Graduation,
-                BeerTypeDto = source.BeerTypeDto,
-                CountryDto = source.CountryDto,
-                CityDto = source.CityDto
+                BeerTypeId =  source.BeerTypeId,
+                CountryId = source.CountryId,
+                CityId = source.CityId
             };
 
             return result;
@@ -74,7 +74,7 @@ namespace Beers.web.Models.Beer
         {
             var resultList = new List<BeerViewModel>();
 
-            if (source.Count > 0)
+            if (source != null)
             {
                 foreach (var item in source)
                 {

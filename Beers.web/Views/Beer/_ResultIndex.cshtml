@@ -24,7 +24,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name.ToString(), "Edit", new { Id = item.Id, CountryId = item.CountryDto.Code })
+                    @Html.ActionLink(item.Name.ToString(), "Edit", new { Id = item.Id })
                 </td>
                 <td>
                     @Html.Label(item.Graduation.ToString())
@@ -39,11 +39,11 @@
                     @Html.Label(item.CityDto.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @*@Html.ActionLink("Delete", "Delete", new { Id = item.Id}, new { @id="DeleteHandler"})*@
+                    <input type="submit" value="Delete" onclick="onDeleteHandlerClick('@item.Id','beer');"/>
                 </td>
             </tr>
         }
     </table>
 </div>
-
 

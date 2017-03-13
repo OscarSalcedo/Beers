@@ -15,16 +15,19 @@
         {
                 <tr>
                     <td>
-                        @Html.ActionLink(item.Code.ToString(),"Edit", new { id = item.Code})
+                        @Html.ActionLink(item.Code.ToString(),"Edit", new { ID = item.Code})
                         @*@Html.Label(item.Code.ToString())*@
                     </td>
                     <td>
                         @Html.Label(item.Description)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Code }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Code })
+                        <input type="submit" value="Delete" onclick="onDeleteHandlerClick('@item.Code','beerType');" />
+                    </td> 
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { ID = item.Code }) |
+                        @Html.ActionLink("Details", "Details", new { ID = item.Code }) |
+                        @*@Html.ActionLink("Delete", "Delete", new { ID = item.Code }, new { @id = "DeleteHandler" })*@
                     </td>
                 </tr>
             }

@@ -39,7 +39,7 @@ namespace Beers.services.Implementations
 
         public BeerDto GetBeerById(Guid beerId)
         {
-            return FindWithInclude<Beer>(f => f.Id == beerId, GetIncludes()).ToBeerDto();
+            return FindWithInclude<Beer>(f => f.Id == beerId, GetIncludes()).ToBeerDetailDto();
         }
 
         public List<BeerDto> GetBeerByFilter(FilterOptionsDto filterOptions)

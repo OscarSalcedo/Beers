@@ -4,14 +4,17 @@
 
 @Html.ActionLink("Create new Beer", "Create");
 
-@using (@Html.BeginForm("Filter","Beer",FormMethod.Post))
-{ 
+@using (@Html.BeginForm("Filter", "Beer", FormMethod.Post))
+{
     <div>
         @{Html.RenderPartial("_Filter", Model.Filter);}
-        <input type="submit"  value="Search" />
+        <input type="submit" value="Search" />
     </div>
 
-    <div>
-        @{Html.RenderPartial("_ResultIndex", Model.BeerViewModelList.ToList());}
-    </div>
+}
+<div>
+    @{Html.RenderPartial("_ResultIndex", Model.BeerViewModelList.ToList());}
+</div>
+@section scripts{
+    <script src="~/Scripts/Beer/delete.js"></script>
 }
