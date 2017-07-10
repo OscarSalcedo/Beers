@@ -54,6 +54,16 @@ namespace Beers.Migrations.Migrations
             cityList.ForEach(f => context.City.AddOrUpdate(f));
             context.SaveChanges();
 
+            var tapasList = new List<Tapas>
+            {
+                new Tapas { Id = Guid.Parse("F43D82C9-5F88-4867-9BEF-64C4E9D5156B"), Name="Tortilla", Price=2},
+                new Tapas { Id = Guid.Parse("52681C45-69CF-4E44-8619-B721988730A2"), Name="Jamon", Price=3},
+                new Tapas { Id = Guid.Parse("4906C3A5-A68F-4839-A979-8AF610175C4E"), Name="Pulpo", Price=5}
+
+            };
+            tapasList.ForEach(f => context.Tapas.AddOrUpdate(f));
+            context.SaveChanges();
+
         }
     }
 }

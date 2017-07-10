@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201703020831119_AddCityToBeer.Designer.cs">
       <DependentUpon>201703020831119_AddCityToBeer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707101502560_AddTapas.cs" />
+    <Compile Include="Migrations\201707101502560_AddTapas.Designer.cs">
+      <DependentUpon>201707101502560_AddTapas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703020831119_AddCityToBeer.resx">
       <DependentUpon>201703020831119_AddCityToBeer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101502560_AddTapas.resx">
+      <DependentUpon>201707101502560_AddTapas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

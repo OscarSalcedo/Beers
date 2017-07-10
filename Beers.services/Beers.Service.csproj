@@ -56,10 +56,12 @@
     <Compile Include="Implementations\CityService.cs" />
     <Compile Include="Implementations\CountryService.cs" />
     <Compile Include="Implementations\ServiceBase.cs" />
+    <Compile Include="Implementations\TapasService.cs" />
     <Compile Include="Mappers\BeerExtension.cs" />
     <Compile Include="Mappers\BeerTypeExtension.cs" />
     <Compile Include="Mappers\CityExtension.cs" />
     <Compile Include="Mappers\CountryExtension.cs" />
+    <Compile Include="Mappers\TapasExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

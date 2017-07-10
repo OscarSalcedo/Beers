@@ -1,0 +1,29 @@
+﻿@model Beers.web.Models.Tapas.TapasViewModel
+
+<h2>Index</h2>
+<h3>Tapas Page</h3>
+
+<div>
+    <table>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Precio
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Label(item.Name.toString())
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

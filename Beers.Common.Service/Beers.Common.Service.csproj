@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -45,6 +53,7 @@
     <Compile Include="Contrats\IBeerTypeService.cs" />
     <Compile Include="Contrats\ICityService.cs" />
     <Compile Include="Contrats\ICountryService.cs" />
+    <Compile Include="Contrats\ITapasService.cs" />
     <Compile Include="DTOs\BaseDto.cs" />
     <Compile Include="DTOs\BeerDto.cs" />
     <Compile Include="DTOs\BeerTypeDto.cs" />
@@ -52,6 +61,7 @@
     <Compile Include="DTOs\CountryDto.cs" />
     <Compile Include="DTOs\FilterOptionsDto.cs" />
     <Compile Include="DTOs\StateMessageDto.cs" />
+    <Compile Include="DTOs\TapasDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +69,10 @@
       <Project>{F81D2A7A-7147-432C-B852-851D54D7A91E}</Project>
       <Name>Beers.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
