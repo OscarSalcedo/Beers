@@ -4,7 +4,7 @@
 <h3>Tapas Page</h3>
 
 <div>
-    <table>
+    <table class="table">
         <tr>
             <th>
                 Name
@@ -20,7 +20,7 @@
                     @Html.Label(item.Name.ToString())
                 </td>
                 <td>
-                    @Html.Label(item.Price.ToString())
+                    @Html.Label(item.Price.ToString() + " €")
                 </td>
             </tr>
         }
