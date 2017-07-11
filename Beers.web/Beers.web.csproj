@@ -164,6 +164,7 @@
     <Compile Include="Models\City\CityViewModelExtension.cs" />
     <Compile Include="Models\Country\CountryViewModelExtension.cs" />
     <Compile Include="Models\Tapas\TapasViewModel.cs" />
+    <Compile Include="Models\Tapas\TapasViewModelExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

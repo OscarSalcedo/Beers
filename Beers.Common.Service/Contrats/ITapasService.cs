@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Beers.Common.Service.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Beers.Common.Service.Contrats
 {
     public interface ITapasService
     {
+        List<TapasDto> GetAllTapas();
 
     }
 }
